@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-8 offset-2 mt-4">
+        <div class="col-10 offset-1 mt-4">
             <form #searchForm="ngForm" (ngSubmit)="onQuestion(searchForm)">
                 <div class="form-group">
                     <label for="question">Question</label>
@@ -10,7 +10,7 @@
                     #question="ngModel"
                     class="form-control"
                     required>
-                    
+
                     <strong *ngIf="question.touched && question.hasError('required')" 
                         class="text-danger">Question is a required Field.
                     </strong>

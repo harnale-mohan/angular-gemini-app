@@ -33,6 +33,7 @@ export class GoogleComponent {
   }
 
   onQuestion(form: NgForm) {
+
     const question = form.value.question;
 
     this.generateText(question).subscribe({
