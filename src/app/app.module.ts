@@ -3,14 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { GoogleComponent } from './shared/component/google/google.component';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import { HttpClientModule} from '@angular/common/http'
+import { FormsModule } from '@angular/forms'
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GoogleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatProgressSpinnerModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
