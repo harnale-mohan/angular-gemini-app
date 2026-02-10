@@ -26,20 +26,24 @@ export class GoogleComponent {
       return of('Please enter a valid question.');
     }
     return from(this.model.generateContent(question))
-                                                  .pipe(
-                                                      map(result => result.response.text())
-                                                    )
+                                          .pipe(
+                                           map(result => result.response.text())
+                                          )
+
   }
 
-  onQuestion(text: string) {
-    this.generateText(text).subscribe({
+  onQuestion(form: NgForm) {
+    const question = form.value.question;
+
+    this.generateText(question).subscribe({
       next: result => {
         this.answerText = result;
+        form.reset();
       },
       error: () => {
         this.answerText = 'Something went wrong';
       }
-    });
+    })
   }
 }
 

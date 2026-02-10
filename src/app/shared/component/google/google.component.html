@@ -1,27 +1,30 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2 mt-4">
-            <form #searchForm="ngForm">
+            <form #searchForm="ngForm" (ngSubmit)="onQuestion(searchForm)">
                 <div class="form-group">
                     <label for="question">Question</label>
                     <input type="text" 
                     name="question"
                     ngModel
                     #question="ngModel"
-                    class="form-control" #input
+                    class="form-control"
                     required>
-                    <p>wait for 2s for reply...</p>
+                    
                     <strong *ngIf="question.touched && question.hasError('required')" 
                         class="text-danger">Question is a required Field.
                     </strong>
+
+                    <strong class="text-info" *ngIf="question.dirty">
+                        Wait For 2s for Answer...</strong>
                 </div>
 
                 <div class="text-center">
                     <button 
                         [disabled]="searchForm.invalid"
-                        type="button" 
+                        type="submit" 
                         class="btn btn-primary" 
-                        (click)="onQuestion(input.value)">
+                        >
                         Ask Gemini
                     </button>
                 </div>
