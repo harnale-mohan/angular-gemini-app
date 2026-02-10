@@ -10,7 +10,7 @@
                     #question="ngModel"
                     class="form-control" #input
                     required>
-
+                    <p>wait for 2s for reply...</p>
                     <strong *ngIf="question.touched && question.hasError('required')" 
                         class="text-danger">Question is a required Field.
                     </strong>
