@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-10 offset-1 mt-4">
+        <div class="col-12 mt-4">
             <form #searchForm="ngForm" (ngSubmit)="onQuestion(searchForm)">
                 <div class="form-group">
                     <label for="question">Question</label>
@@ -33,7 +33,7 @@
                     <textarea 
                         [value]="answerText" 
                         class="form-control" 
-                        rows="10" 
+                        rows="15" 
                         readonly>
                     </textarea>
                 </div>
