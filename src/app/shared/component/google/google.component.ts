@@ -15,6 +15,7 @@ import { NgForm } from '@angular/forms';
 export class GoogleComponent {
   searchForm !: NgForm
   answerText: string = ''
+  isLoading : boolean = false
 
   public geminiAi = new GoogleGenerativeAI(environment.geminiApiKey)
   public model = this.geminiAi.getGenerativeModel({ model: 'gemini-2.5-flash' })
@@ -25,6 +26,7 @@ export class GoogleComponent {
     if (!question || !question.trim()) {
       return of('Please enter a valid question.');
     }
+    this.isLoading = true
     return from(this.model.generateContent(question))
                                           .pipe(
                                            map(result => result.response.text())
@@ -40,9 +42,11 @@ export class GoogleComponent {
       next: result => {
         this.answerText = result;
         form.reset();
+        this.isLoading = false
       },
       error: () => {
-        this.answerText = 'Something went wrong';
+        this.answerText = 'sorry, Your Search Limit Reached..';
+        this.isLoading = false
       }
     })
   }
